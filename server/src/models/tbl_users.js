@@ -1,37 +1,32 @@
-const { Model, DataTypes } = require('sequelize');
-
-class tbl_users extends Model {
-    static init(sequelize){
-        super.init({
-            id_user: {
-                type: DataTypes.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-                allowNull: false,
-              },
-              name: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-              },
-              email: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                unique: true,
-              },
-              password: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-              },
-              birth_date: {
-                type: DataTypes.DATE,
-                allowNull: false,
-              },
-              parturition_preview: {
-                type: DataTypes.DATE,
-                allowNull: true,
-              },
-        }, {sequelize});
-    }
+module.exports = (sequelize, DataTypes) => {
+  const tbl_users = sequelize.define('tbl_users', {
+    id_user: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING(70),
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    birth_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    parturition_preview: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+  });
+  return tbl_users;
 }
-
-module.exports = tbl_users;
