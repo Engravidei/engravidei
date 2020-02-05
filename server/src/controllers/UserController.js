@@ -1,0 +1,1 @@
+const tbl_users = require('./models/tbl_users');
