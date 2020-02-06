@@ -4,7 +4,7 @@ module.exports = {
     username:'root',
     password: 'gabriel123',
     database: 'ENGRAVIDEI',
-    DEFINE: {
+    define: {
         timestamps: true,
         underscored: true,
     },

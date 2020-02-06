@@ -1,19 +1,14 @@
-const tbl_users = require('../models/tbl_users');
+const { tbl_users } = require('../models');
 const Service = require('../services/UserService');
+const getCatch = require('../utils/getCatch');
 
 module.exports = {
 
         registerUser: async (req, res) => {
             const { id_user, name, email, password, birth_date, parturition_preview } = req.body;
-            const user = await Service.registerUser({ id_user, name, email, password, birth_date, parturition_preview });
-
-            if(user.success) {
-                return res.status(201).json(data.user);
-            }
-            else {
-                return res.status(422).json({});
-            }
-
+            const user = await tbl_users.create({ id_user, name, email, password, birth_date, parturition_preview })
+                .catch(err => getCatch(err));
+            return res.json(user);
         }
 
 

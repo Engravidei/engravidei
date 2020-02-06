@@ -28,4 +28,5 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
           },
     });
+    return tbl_feedback;
 }
