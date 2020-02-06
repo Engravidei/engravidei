@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const tbl_consult = sequelize.define('tbl_consult', {
-        id_consult: {
+    const tbl_doctors = sequelize.define('tbl_doctors', {
+        id_doctor: { 
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -22,10 +22,19 @@ module.exports = (sequelize, DataTypes) => {
               key: 'id_care_unit',
             },
           },
-          doctor_name: {
+          name: {
             type: DataTypes.STRING(50),
             allowNull: false,
           },
+          email: {
+            type: DataTypes.STRING(70),
+            allowNull: false,
+            unique: true,
+          },
+          password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
     });
-    return tbl_consult;
+    return tbl_doctors;
 }
