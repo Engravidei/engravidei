@@ -1,5 +1,4 @@
 const { tbl_users } = require('../models');
-const Service = require('../services/UserService');
 const getCatch = require('../utils/getCatch');
 
 module.exports = {

@@ -17,5 +17,9 @@ routes.put('/updateUser/:id', UserController.updateUser);
 
 //CareUnitController routes
 routes.post('/registerCareUnit', CareUnitController.registerCareUnit);
+routes.delete('/deleteCareUnit/:id', CareUnitController.deleteCareUnit);
+routes.get('/listCareUnits', CareUnitController.listCareUnits);
+routes.get('/getCareUnit/:id', CareUnitController.getCareUnit);
+routes.put('/updateCareUnit/:id', CareUnitController.updateCareUnit);
 
 module.exports = routes;
