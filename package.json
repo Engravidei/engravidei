@@ -2,10 +2,10 @@
   "name": "engravidei",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon server/src/server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
