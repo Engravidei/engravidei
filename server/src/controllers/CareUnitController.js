@@ -1,11 +1,12 @@
-const { tbl_care_unit } = require('../models');
+const { tbl_care_unit, tbl_type_care_unit } = require('../models');
 const getCatch = require('../utils/getCatch');
 
 module.exports = {
 
+    //Need to change fk_id_care_unit for a array of fk_id_care_unit
     registerCareUnit: async(req, res) => {
-        const { id_care_unit, name, address } = req.body;
-        const careUnit = await tbl_care_unit.create({ id_care_unit, name, address })
+        const { id_care_unit, fk_id_type_care_unit, name, address } = req.body;
+        const careUnit = await tbl_care_unit.create({ id_care_unit, fk_id_type_care_unit, name, address })
             .catch(err => getCatch(err));
         return res.status(201).json(careUnit);
     },
@@ -43,5 +44,16 @@ module.exports = {
             .catch(err => getCatch(err));
         return res.json(careUnit);
     },
+
+    getCareUnitsOfTypeX: async(req, res) => {
+        const fk_id_type_care_unit = req.params.id;
+        const typesCareUnit = await tbl_care_unit.findAll( {where: { fk_id_type_care_unit: fk_id_type_care_unit }, raw:true } )
+            .catch(err => getCatch(err));
+        if(typesCareUnit === 0) {
+            return res.json(typesCareUnit);
+        }
+        return res.json(typesCareUnit);
+    },
+
 
 };

@@ -25,6 +25,14 @@ module.exports = {
           key: 'id_care_unit',
         },
       },
+      fk_id_consult_type: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'tbl_consult_type',
+          key: 'id_consult_type',
+        },
+      },
       doctor_name: {
         type: Sequelize.STRING(50),
         allowNull: false,

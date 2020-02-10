@@ -7,17 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     name_type_unit: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull:false,
       unique: true,
-    },
-    fk_id_care_unit: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'tbl_care_unit',
-        key: 'id_care_unit',
-      },
     },
   });
   return tbl_type_care_unit;

@@ -22,11 +22,14 @@ routes.delete('/deleteCareUnit/:id', CareUnitController.deleteCareUnit);
 routes.get('/listCareUnits', CareUnitController.listCareUnits);
 routes.get('/getCareUnit/:id', CareUnitController.getCareUnit);
 routes.put('/updateCareUnit/:id', CareUnitController.updateCareUnit);
+routes.get('/getCareUnitsOfTypeX/:id', CareUnitController.getCareUnitsOfTypeX);
 
 //TypeCareUnitController routes
 routes.post('/registerTypeCareUnit', TypeCareUnitController.registerTypeCareUnit);
 routes.get('/listTypeCareUnit', TypeCareUnitController.listTypeCareUnit);
 routes.get('/getTypeCareUnit/:id', TypeCareUnitController.getTypeCareUnit);
-routes.get('getCareUnitsOfTypeX/:id', TypeCareUnitController.getCareUnitsOfTypeX);
+routes.put('/updateTypeCareUnit/:id', TypeCareUnitController.updateTypeCareUnit);
+routes.delete('/deleteTypeCareUnit/:id', TypeCareUnitController.deleteTypeCareUnit);
+
 
 module.exports = routes;

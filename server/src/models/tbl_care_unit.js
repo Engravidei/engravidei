@@ -6,13 +6,21 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false,
      },
+     fk_id_type_care_unit: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'tbl_type_care_unit',
+        key: 'id_type_care_unit',
+      },
+    },
      name: {
-       type: DataTypes.STRING,
+       type: DataTypes.STRING(50),
        allowNull: false,
        unique: true,
      },
      address: {
-       type: DataTypes.STRING,
+       type: DataTypes.STRING(80),
        allowNull: false,
      },
   });

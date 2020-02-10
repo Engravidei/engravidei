@@ -9,14 +9,6 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      fk_id_consult: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'tbl_consult',
-          key: 'id_consult',
-        },
-      },
       name_consult_type: {
         type: Sequelize.STRING(50),
         allowNull: false,
