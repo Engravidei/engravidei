@@ -1,35 +1,37 @@
 const express = require('express');
 
 const routes = express.Router();
-const UserController = require('./controllers/UserController');
-const CareUnitController = require('./controllers/CareUnitController');
-const TypeCareUnitController = require('./controllers/TypeCareUnitController');
+const getController = require('./utils/getController');
 
 routes.get('/', (req, res) => {
     return res.json({hello: 'World'});
 });
 
 //UserController routes
-routes.post('/registerUser', UserController.registerUser);
-routes.get('/listUsers', UserController.listUsers);
-routes.get('/getUser/:id', UserController.getUser);
-routes.delete('/deleteUser/:id', UserController.deleteUser);
-routes.put('/updateUser/:id', UserController.updateUser);
+routes.post('/registerUser', getController.UserController.registerUser);
+routes.get('/listUsers', getController.UserController.listUsers);
+routes.get('/getUser/:id', getController.UserController.getUser);
+routes.delete('/deleteUser/:id', getController.UserController.deleteUser);
+routes.put('/updateUser/:id', getController.UserController.updateUser);
 
 //CareUnitController routes
-routes.post('/registerCareUnit', CareUnitController.registerCareUnit);
-routes.delete('/deleteCareUnit/:id', CareUnitController.deleteCareUnit);
-routes.get('/listCareUnits', CareUnitController.listCareUnits);
-routes.get('/getCareUnit/:id', CareUnitController.getCareUnit);
-routes.put('/updateCareUnit/:id', CareUnitController.updateCareUnit);
-routes.get('/getCareUnitsOfTypeX/:id', CareUnitController.getCareUnitsOfTypeX);
+routes.post('/registerCareUnit', getController.CareUnitController.registerCareUnit);
+routes.delete('/deleteCareUnit/:id', getController.CareUnitController.deleteCareUnit);
+routes.get('/listCareUnits', getController.CareUnitController.listCareUnits);
+routes.get('/getCareUnit/:id', getController.CareUnitController.getCareUnit);
+routes.put('/updateCareUnit/:id', getController.CareUnitController.updateCareUnit);
+routes.get('/getCareUnitsOfTypeX/:id', getController.CareUnitController.getCareUnitsOfTypeX);
 
 //TypeCareUnitController routes
-routes.post('/registerTypeCareUnit', TypeCareUnitController.registerTypeCareUnit);
-routes.get('/listTypeCareUnit', TypeCareUnitController.listTypeCareUnit);
-routes.get('/getTypeCareUnit/:id', TypeCareUnitController.getTypeCareUnit);
-routes.put('/updateTypeCareUnit/:id', TypeCareUnitController.updateTypeCareUnit);
-routes.delete('/deleteTypeCareUnit/:id', TypeCareUnitController.deleteTypeCareUnit);
+routes.post('/registerTypeCareUnit', getController.TypeCareUnitController.registerTypeCareUnit);
+routes.get('/listTypeCareUnit', getController.TypeCareUnitController.listTypeCareUnit);
+routes.get('/getTypeCareUnit/:id', getController.TypeCareUnitController.getTypeCareUnit);
+routes.put('/updateTypeCareUnit/:id', getController.TypeCareUnitController.updateTypeCareUnit);
+routes.delete('/deleteTypeCareUnit/:id', getController.TypeCareUnitController.deleteTypeCareUnit);
 
+
+//ConsultTypeController routes
+routes.post('/registerConsultTye', getController.ConsultTypeController.registerConsultType);
+routes.get('/listConsultTypes', getController.ConsultTypeController.listConsultTypes);
 
 module.exports = routes;

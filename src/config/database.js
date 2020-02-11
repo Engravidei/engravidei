@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({
+    path: process.env.NODE_ENV == 'test' ? '.env.localhost' : '.env'
+})
 
 module.exports = {
     dialect: 'mysql',
@@ -12,15 +14,3 @@ module.exports = {
         freezeTableName: true,
     },
 };
-
-/*const Sequelize = require('sequelize');
-const sequelize = new Sequelize('ENGRAVIDEI', 'root', 'gabriel123', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
-
-sequelize.authenticate().then(function(){
-    console.log("Connect with database");
-}).catch(function(erro) {
-    console.log("Not connect with database");
-})*/
