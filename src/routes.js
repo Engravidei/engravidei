@@ -47,5 +47,19 @@ routes.put('/updateConsultType', getController.ConsultTypeController.updateConsu
 //ConsultController routes
 routes.post('/registerConsult', getController.ConsultController.registerConsult);
 routes.get('/listConsults', getController.ConsultController.listConsults);
+routes.get('/getConsult/:id', getController.ConsultController.getConsult);
+routes.get('/getConsultOfTypeX/:id', getController.ConsultController.getConsultOfTypeX);
+routes.get('/getConsultsFromUser', getController.ConsultController.getConsultsFromUser);
+routes.delete('/deleteConsult/:id', getController.ConsultController.deleteConsult);
+routes.put('/updateConsult/:id', getController.ConsultController.updateConsult);
+
+//DoctorController routes
+routes.post('/registerDoctor', getController.DoctorController.registerDoctor);
+routes.get('/listDoctors', getController.DoctorController.listDoctors);
+routes.get('/getDoctor/:id', getController.DoctorController.getDoctor);
+routes.get('/getDoctorByEmail', getController.DoctorController.getDoctorByEmail);
+routes.delete('/deleteDoctor/:id', getController.DoctorController.deleteDoctor);
+routes.delete('/deleteDoctorByEmail', getController.DoctorController.deleteDoctorByEmail);
+routes.put('/updateDoctor/:id', getController.DoctorController.updateDoctor);
 
 module.exports = routes;

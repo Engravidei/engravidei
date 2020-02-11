@@ -62,11 +62,7 @@ module.exports = {
         const fk_id_type_care_unit = req.params.id;
         const typesCareUnit = await tbl_care_unit.findAll( {where: { fk_id_type_care_unit: fk_id_type_care_unit }, raw:true } )
             .catch(err => getCatch(err));
-        if(typesCareUnit === 0) {
-            return res.json(typesCareUnit);
-        }
         return res.json(typesCareUnit);
     },
-
 
 };
