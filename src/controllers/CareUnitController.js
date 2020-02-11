@@ -1,21 +1,13 @@
-const { tbl_care_unit, tbl_type_care_unit } = require('../models');
+const { tbl_care_unit } = require('../models');
 const getCatch = require('../utils/getCatch');
 
 module.exports = {
 
-    //Need to change fk_id_care_unit for a array of fk_id_care_unit
     registerCareUnit: async(req, res) => {
         const { id_care_unit, fk_id_type_care_unit, name, address } = req.body;
         const careUnit = await tbl_care_unit.create({ id_care_unit, fk_id_type_care_unit, name, address })
             .catch(err => getCatch(err));
         return res.status(201).json(careUnit);
-    },
-
-    deleteCareUnit: async(req, res) => {
-        const id_care_unit = req.params.id;
-        const careUnit = await tbl_care_unit.destroy( {where: {id_care_unit : id_care_unit} } )
-            .catch(err => getCatch(err));
-        return res.json(careUnit);
     },
 
     listCareUnits: async(req, res) => {
@@ -27,6 +19,27 @@ module.exports = {
     getCareUnit: async(req, res) => {
         const id_care_unit = req.params.id;
         const careUnit = await tbl_care_unit.findOne( {where: {id_care_unit : id_care_unit} } )
+            .catch(err => getCatch(err));
+        return res.json(careUnit);
+    },
+
+    getCareUnitByName: async(req, res) => {
+        const name = req.body.name;
+        const careUnit = await tbl_care_unit.findOne( {where: {name : name} } )
+            .catch(err => getCatch(err));
+        return res.json(careUnit);
+    },
+
+    deleteCareUnit: async(req, res) => {
+        const id_care_unit = req.params.id;
+        const careUnit = await tbl_care_unit.destroy( {where: {id_care_unit : id_care_unit} } )
+            .catch(err => getCatch(err));
+        return res.json(careUnit);
+    },
+
+    deleteCareUnitByName: async(req, res) => {
+        const name = req.body.name;
+        const careUnit = await tbl_care_unit.destroy( {where: {name : name} } )
             .catch(err => getCatch(err));
         return res.json(careUnit);
     },
