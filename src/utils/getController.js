@@ -5,6 +5,7 @@ const ConsultTypeController = require('../controllers/ConsultTypeController');
 const ConsultController = require('../controllers/ConsultController');
 const DoctorController = require('../controllers/DoctorController');
 const FeedbackOpnionController = require('../controllers/FeedbackOpnionController');
+const FeedBackController = require('../controllers/FeedbackController');
 
 module.exports = {
     UserController,
@@ -14,4 +15,5 @@ module.exports = {
     ConsultController,
     DoctorController,
     FeedbackOpnionController,
+    FeedBackController,
 };

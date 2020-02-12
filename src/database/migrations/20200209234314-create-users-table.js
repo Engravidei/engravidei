@@ -9,6 +9,14 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
+      fk_id_doctor: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'tbl_users',
+          key: 'id_user',
+        },
+        allowNull: true,
+      },
       name: {
         type: Sequelize.STRING(50),
         allowNull: false,

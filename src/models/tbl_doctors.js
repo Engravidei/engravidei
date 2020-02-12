@@ -6,17 +6,8 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false,
           },
-          fk_id_user: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-              model: 'tbl_users',
-              key: 'id_user',
-            },
-          },
           fk_id_care_unit: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
               model: 'tbl_care_unit',
               key: 'id_care_unit',

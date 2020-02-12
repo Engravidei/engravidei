@@ -7,6 +7,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       field: 'id_user',
     },
+    fk_id_doctor: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'tbl_users',
+        key: 'id_user',
+      },
+      allowNull: true,
+    },
     name: {
       type: DataTypes.STRING(50),
       allowNull: false,

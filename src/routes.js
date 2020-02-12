@@ -12,6 +12,7 @@ routes.post('/registerUser', getController.UserController.registerUser);
 routes.get('/listUsers', getController.UserController.listUsers);
 routes.get('/getUser/:id', getController.UserController.getUser);
 routes.get('/getUserByEmail', getController.UserController.getUserByEmail);
+routes.get('/getUserDoctor', getController.UserController.getUserDoctor);
 routes.delete('/deleteUser/:id', getController.UserController.deleteUser);
 routes.delete('/deleteUserByEmail', getController.UserController.deleteUserByEmail);
 routes.put('/updateUser/:id', getController.UserController.updateUser);
@@ -58,9 +59,11 @@ routes.post('/registerDoctor', getController.DoctorController.registerDoctor);
 routes.get('/listDoctors', getController.DoctorController.listDoctors);
 routes.get('/getDoctor/:id', getController.DoctorController.getDoctor);
 routes.get('/getDoctorByEmail', getController.DoctorController.getDoctorByEmail);
+routes.get('/getPatients', getController.DoctorController.getPatients);
 routes.delete('/deleteDoctor/:id', getController.DoctorController.deleteDoctor);
 routes.delete('/deleteDoctorByEmail', getController.DoctorController.deleteDoctorByEmail);
 routes.put('/updateDoctor/:id', getController.DoctorController.updateDoctor);
+routes.put('/addPatient', getController.DoctorController.addPatient);
 
 //FeedbackOpnionController routes
 routes.post('/registerFeedbackOpnion', getController.FeedbackOpnionController.registerFeedbackOpnion);
@@ -70,5 +73,15 @@ routes.get('/getFeedbackOpnionByName', getController.FeedbackOpnionController.ge
 routes.delete('/deleteFeedbackOpnion/:id', getController.FeedbackOpnionController.deleteFeedbackOpnion);
 routes.delete('/deleteFeedbackOpnionByName', getController.FeedbackOpnionController.deleteFeedbackOpnionByName);
 routes.put('/updateFeedbackOpnion', getController.FeedbackOpnionController.updateFeedbackOpnion);
+
+//FeedbackController routes
+routes.post('/registerFeedback', getController.FeedBackController.registerFeedback);
+routes.get('/listFeedbacks', getController.FeedBackController.listFeedbacks);
+routes.get('/getFeedback/:id', getController.FeedBackController.getFeedback);
+routes.get('/getFeedbackByDescription', getController.FeedBackController.getFeedbackByDescription);
+routes.get('/getConsultOfTypeX', getController.FeedBackController.getFeedbackOfTypeX);
+routes.delete('/deleteFeedback', getController.FeedBackController.deleteFeedback);
+routes.delete('/deleteFeedbackByDescription', getController.FeedBackController.deleteFeedbackByDescription);
+routes.put('/updateConsult', getController.FeedBackController.updateConsult);
 
 module.exports = routes;

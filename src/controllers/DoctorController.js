@@ -1,13 +1,24 @@
-const { tbl_doctors } = require('../models');
+const { tbl_doctors, tbl_users } = require('../models');
 const getCatch = require('../utils/getCatch');
 
 module.exports = {
 
     registerDoctor: async(req, res) => {
-        const { id_doctor, fk_id_user, fk_id_care_unit, name, email, password } = req.body;
-        const doctor = await tbl_doctors.create({ id_doctor, fk_id_user, fk_id_care_unit, name, email, password })
+        const { id_doctor, fk_id_care_unit, name, email, password } = req.body;
+        const doctor = await tbl_doctors.create({ id_doctor, fk_id_care_unit, name, email, password })
             .catch(err => getCatch(err));
         return res.status(201).json(doctor);
+    },
+
+    addPatient: async(req, res) => {
+        const { doctorEmail, id_user } = req.body;
+        const doctor = await tbl_doctors.findOne({where : {email : doctorEmail}})
+            .catch(err => getCatch(err));
+        const user = await tbl_users.findOne({where: {id_user}})
+            .catch(err => getCatch(err));
+        user.fk_id_doctor = doctor.id_doctor;
+        await user.save();
+        return res.json(user);
     },
 
     listDoctors: async(req, res) => {
@@ -28,6 +39,15 @@ module.exports = {
         const doctor = await tbl_doctors.findOne( {where : {email}} )
             .catch(err => getCatch(err));
         return res.json(doctor);
+    },
+
+    getPatients: async(req, res) => {
+        const email = req.body.email;
+        const doctor = await tbl_doctors.findOne({where:{email}})
+            .catch(err=> getCatch(err));
+        const users = await tbl_users.findAll({where:{fk_id_doctor : doctor.id_doctor}})
+            .catch(err => getCatch(err));
+        return res.json(users);
     },
 
     deleteDoctor: async(req, res) => {
