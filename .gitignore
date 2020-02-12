@@ -1,2 +1,8 @@
 /node_modules
+<<<<<<< HEAD
 server/node_modules
+=======
+server/node_modules
+.env
+.env.localhost
+>>>>>>> release/engravidei_v1.0.2

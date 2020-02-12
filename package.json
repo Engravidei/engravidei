@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "devLocalHost": "NODE_ENV=test nodemon src/server.js",
+    "dbLocal": "NODE_ENV=test sequelize db:create",
+    "migrateLocal": "NODE_ENV=test sequelize db:migrate",
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
