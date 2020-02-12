@@ -62,4 +62,13 @@ routes.delete('/deleteDoctor/:id', getController.DoctorController.deleteDoctor);
 routes.delete('/deleteDoctorByEmail', getController.DoctorController.deleteDoctorByEmail);
 routes.put('/updateDoctor/:id', getController.DoctorController.updateDoctor);
 
+//FeedbackOpnionController routes
+routes.post('/registerFeedbackOpnion', getController.FeedbackOpnionController.registerFeedbackOpnion);
+routes.get('/listFeedbackOpnion', getController.FeedbackOpnionController.listFeedbackOpnion);
+routes.get('/getFeedbackOpnion/:id', getController.FeedbackOpnionController.getFeedbackOpnion);
+routes.get('/getFeedbackOpnionByName', getController.FeedbackOpnionController.getFeedbackOpnionByName);
+routes.delete('/deleteFeedbackOpnion/:id', getController.FeedbackOpnionController.deleteFeedbackOpnion);
+routes.delete('/deleteFeedbackOpnionByName', getController.FeedbackOpnionController.deleteFeedbackOpnionByName);
+routes.put('/updateFeedbackOpnion', getController.FeedbackOpnionController.updateFeedbackOpnion);
+
 module.exports = routes;

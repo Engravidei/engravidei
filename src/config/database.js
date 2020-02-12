@@ -1,6 +1,6 @@
 require('dotenv').config({
     path: process.env.NODE_ENV == 'test' ? '.env.localhost' : '.env'
-})
+});
 
 module.exports = {
     dialect: 'mysql',
