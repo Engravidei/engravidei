@@ -56,7 +56,7 @@ routes.put('/updateConsult/:id', getController.ConsultController.updateConsult);
 //DoctorController routes
 routes.post('/registerDoctor', getController.DoctorController.registerDoctor);
 routes.get('/listDoctors', getController.DoctorController.listDoctors);
-routes.get('/getDoctor/:id', getController.DoctorController.getDoctor);
+//routes.get('/getDoctor/:id', getController.DoctorController.getDoctor);
 routes.get('/sessionDoctor', getController.SessionService.doctorLogin);
 routes.get('/getPatients', getController.DoctorController.getPatients);
 routes.delete('/deleteDoctorByEmail', getController.DoctorController.deleteDoctorByEmail);

@@ -46,7 +46,14 @@ module.exports = {
             .catch(err=> getCatch(err));
         const users = await tbl_users.findAll({where:{fk_id_doctor : doctor.id_doctor}})
             .catch(err => getCatch(err));
-        return res.json(users);
+        const response = {};
+        response.patients = [];
+        for(user of users) {
+            user.fk_id_doctor = undefined;
+            user.password = undefined;
+            response.patients.push(user);
+        }
+        return res.json(response);
     },
 
     deleteDoctorByEmail: async(req, res) => {

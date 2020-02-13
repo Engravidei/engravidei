@@ -32,19 +32,20 @@ module.exports = {
 
     getConsultsFromUser: async(req, res) => {
         const email = req.body.email;
+        const password = req.body.password;
         const user = await tbl_users.findOne( {where: {email}} )
-            .then(
-                async user => {
-                    if(user === null) {
-                        return res.json("Email need be valid");
-                    }
-                    const userConsults = await tbl_consult.findAll({where: {fk_id_user : user.id_user}})
-                        .catch(err => getCatch(err));
-                    return userConsults;
-                }
-            )
             .catch(err => getCatch(err));
-        return res.json(user);
+        if(user === null) {
+            return res.status(409).json({error: 'Invalid Email'})
+        }
+        else if(user.password === password) {
+            const userUpdate = await tbl_consult.findAll({where: {fk_id_user : user.id_user}})
+            .catch(err => getCatch(err));
+            return res.json(userUpdate);
+        }
+        else {
+            return res.status(409).json({error: 'Invalid Password'}); 
+        }
     },
 
     deleteConsult: async(req, res) => {
