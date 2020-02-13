@@ -24,9 +24,9 @@ module.exports = {
     listDoctors: async(req, res) => {
         const { require } = req.body;
         if(require == process.env.SECRET) {
-        const doctors = await tbl_doctors.findAll( {raw : true} )
-            .catch(err => getCatch(err));
-        return res.json(doctors);
+            const doctors = await tbl_doctors.findAll( {raw : true} )
+                .catch(err => getCatch(err));
+            return res.json(doctors);
         }
         else {
             return res.status(409).json({error: "You don't have access to this area"});
