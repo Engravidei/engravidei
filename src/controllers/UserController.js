@@ -11,21 +11,20 @@ module.exports = {
         },
 
         listUsers: async (req, res) => {
-            const users = await tbl_users.findAll({raw: true})
-                .catch(err => getCatch(err));
-            return res.json(users);
+            const { require } = req.body;
+            if(require == process.env.SECRET) {
+                const users = await tbl_users.findAll({raw: true})
+                    .catch(err => getCatch(err));
+                return res.json(users);
+            }
+            else {
+                return res.status(409).json({error: "You don't have access to this area"});
+            }
         },
 
         getUser: async (req, res) => {
             const id_user = req.params.id;
             const user = await tbl_users.findOne( {where:{ id_user : id_user }} )
-                .catch(err => getCatch(err));
-            return res.json(user);
-        },
-
-        getUserByEmail: async(req, res) => {
-            const email = req.body.email;
-            const user = await tbl_users.findOne( {where:{ email : email }} )
                 .catch(err => getCatch(err));
             return res.json(user);
         },
@@ -44,18 +43,25 @@ module.exports = {
             return res.json(user);
         },
 
-        deleteUser: async (req, res) => {
-            const id_user = req.params.id;
-            const userDeleted = await tbl_users.destroy( {where: {id_user : id_user} } )
-                .catch(err => getCatch(err));
-            return res.json(userDeleted);
-        },
-
         deleteUserByEmail: async(req, res) => {
-            const email = req.body.email;
-            const user = await tbl_users.destroy( {where:{ email : email }} )
+            const { email, password } = req.body;
+
+            const user = await tbl_users.findOne({where:{email}})
                 .catch(err => getCatch(err));
-            return res.json(user);
+
+            if(user !== null ) {
+                if(user.password === password) {
+                    const userDeleted = await tbl_users.destroy({where:{email}})
+                        .catch(err => getCatch(err));
+                    return res.json(userDeleted);
+                }
+                else {
+                    return res.status(409).json({error: 'Invalid Password'});
+                }
+            }
+            else {
+                return res.status(409).json({error: 'Invalid email'});
+            }
         },
 
         updateUser: async(req, res) => {

@@ -22,21 +22,20 @@ module.exports = {
     },
 
     listDoctors: async(req, res) => {
+        const { require } = req.body;
+        if(require == process.env.SECRET) {
         const doctors = await tbl_doctors.findAll( {raw : true} )
             .catch(err => getCatch(err));
         return res.json(doctors);
+        }
+        else {
+            return res.status(409).json({error: "You don't have access to this area"});
+        }
     },
 
     getDoctor: async(req, res) => {
         const id_doctor = req.params.id;
         const doctor = await tbl_doctors.findOne( {where : {id_doctor}} )
-            .catch(err => getCatch(err));
-        return res.json(doctor);
-    },
-
-    getDoctorByEmail: async(req, res) => {
-        const email = req.body.email;
-        const doctor = await tbl_doctors.findOne( {where : {email}} )
             .catch(err => getCatch(err));
         return res.json(doctor);
     },
@@ -50,18 +49,25 @@ module.exports = {
         return res.json(users);
     },
 
-    deleteDoctor: async(req, res) => {
-        const id_doctor = req.params.id;
-        const doctor = await tbl_doctors.destroy( {where : {id_doctor}} )
-            .catch(err => getCatch(err));
-        return res.json(doctor);
-    },
-
     deleteDoctorByEmail: async(req, res) => {
-        const email = req.body.email;
-        const doctor = await tbl_doctors.destroy( {where: {email}} )
+        const { email, password } = req.body;
+
+        const doctor = await tbl_doctors.findOne({where:{email}})
             .catch(err => getCatch(err));
-        return res.json(doctor);
+
+        if(doctor !== null ) {
+            if(doctor.password === password) {
+                const doctorDeleted = await tbl_doctors.destroy({where:{email}})
+                    .catch(err => getCatch(err));
+                return res.json(doctorDeleted);
+            }
+            else {
+                return res.status(409).json({error: 'Invalid Password'});
+            }
+        }
+        else {
+            return res.status(409).json({error: 'Invalid email'});
+        }
     },
 
     updateDoctor: async(req, res) => {

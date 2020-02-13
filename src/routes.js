@@ -11,9 +11,8 @@ routes.get('/', (req, res) => {
 routes.post('/registerUser', getController.UserController.registerUser);
 routes.get('/listUsers', getController.UserController.listUsers);
 routes.get('/getUser/:id', getController.UserController.getUser);
-routes.get('/getUserByEmail', getController.UserController.getUserByEmail);
+routes.get('/sessionUser', getController.SessionService.userLogin);
 routes.get('/getUserDoctor', getController.UserController.getUserDoctor);
-routes.delete('/deleteUser/:id', getController.UserController.deleteUser);
 routes.delete('/deleteUserByEmail', getController.UserController.deleteUserByEmail);
 routes.put('/updateUser/:id', getController.UserController.updateUser);
 
@@ -58,9 +57,8 @@ routes.put('/updateConsult/:id', getController.ConsultController.updateConsult);
 routes.post('/registerDoctor', getController.DoctorController.registerDoctor);
 routes.get('/listDoctors', getController.DoctorController.listDoctors);
 routes.get('/getDoctor/:id', getController.DoctorController.getDoctor);
-routes.get('/getDoctorByEmail', getController.DoctorController.getDoctorByEmail);
+routes.get('/sessionDoctor', getController.SessionService.doctorLogin);
 routes.get('/getPatients', getController.DoctorController.getPatients);
-routes.delete('/deleteDoctor/:id', getController.DoctorController.deleteDoctor);
 routes.delete('/deleteDoctorByEmail', getController.DoctorController.deleteDoctorByEmail);
 routes.put('/updateDoctor/:id', getController.DoctorController.updateDoctor);
 routes.put('/addPatient', getController.DoctorController.addPatient);
