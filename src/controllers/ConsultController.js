@@ -39,9 +39,15 @@ module.exports = {
             return res.status(409).json({error: 'Invalid Email'})
         }
         else if(user.password === password) {
-            const userUpdate = await tbl_consult.findAll({where: {fk_id_user : user.id_user}})
-            .catch(err => getCatch(err));
-            return res.json(userUpdate);
+            const userConsults = await tbl_consult.findAll({where: {fk_id_user : user.id_user}})
+                .catch(err => getCatch(err));
+            const response = {};
+            response.consults = [];
+            for(userConsult of userConsults) {
+                userConsult.fk_id_user = undefined;
+                response.consults.push(userConsult);
+            }
+            return res.json(response);
         }
         else {
             return res.status(409).json({error: 'Invalid Password'}); 

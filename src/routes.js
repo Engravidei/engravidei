@@ -36,7 +36,7 @@ routes.delete('/deleteTypeCareUnitByName', getController.TypeCareUnitController.
 routes.put('/updateTypeCareUnit/:id', getController.TypeCareUnitController.updateTypeCareUnit);
 
 //ConsultTypeController routes
-routes.post('/registerConsultTye', getController.ConsultTypeController.registerConsultType);
+routes.post('/registerConsultType', getController.ConsultTypeController.registerConsultType);
 routes.get('/listConsultTypes', getController.ConsultTypeController.listConsultTypes);
 routes.get('/getConsultType/:id', getController.ConsultTypeController.getConsultType);
 routes.get('/getConsultTypeByName', getController.ConsultTypeController.getConsultTypeByName);
