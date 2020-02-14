@@ -9,17 +9,8 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      fk_id_user: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'tbl_users',
-          key: 'id_user',
-        },
-      },
       fk_id_care_unit: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: 'tbl_care_unit',
           key: 'id_care_unit',
