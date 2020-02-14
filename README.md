@@ -53,3 +53,6 @@ Json req body parameters
 ```
 ### /getUserByEmail
     Get an user by email
+    
+### /listDoctors
+    List all DOctors
