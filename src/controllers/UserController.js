@@ -7,7 +7,7 @@ module.exports = {
             const { id_user, fk_id_doctor, name, email, password, birth_date, parturition_preview } = req.body;
             const user = await tbl_users.create({ id_user, fk_id_doctor, name, email, password, birth_date, parturition_preview })
                 .catch(err => getCatch(err));
-            return res.status(201).json(user);
+            return res.status(201).json({message:`User +${name} created succesfully!`});
         },
 
         listUsers: async (req, res) => {
